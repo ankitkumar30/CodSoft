@@ -1,47 +1,54 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
+using namespace std;
+/**
+ * size_t is a data type in C++ that represents the size of objects in memory. 
+ * It's an unsigned integer type, which means it can only hold non-negative values.
+ * The size of size_t is implementation-defined, 
+ * but it's commonly used for representing sizes of arrays, memory allocations, and indices of collections. 
+ * It's guaranteed to be able to represent the maximum size of any object on the particular platform.
+*/
 struct Task {
-    std::string description;
+    string description;
     bool completed;
 };
 
 class ToDoList {
 private:
-    std::vector<Task> tasks;
+    vector<Task> tasks;
 
 public:
-    void addTask(const std::string& description) {
+    void addTask(const string& description) {
         tasks.push_back({description, false});
-        std::cout << "Task added successfully!" << std::endl;
+        cout << "Task added successfully!" << endl;
     }
 
     void viewTasks() {
-        std::cout << "Tasks:" << std::endl;
+        cout << "Tasks:" << endl;
         for (size_t i = 0; i < tasks.size(); ++i) {
-            std::cout << i + 1 << ". ";
+            cout << i + 1 << ". ";
             if (tasks[i].completed)
-                std::cout << "[Completed] ";
-            std::cout << tasks[i].description << std::endl;
+                cout << "[Completed] ";
+            cout << tasks[i].description <<endl;
         }
     }
 
     void markAsCompleted(size_t index) {
         if (index >= 1 && index <= tasks.size()) {
             tasks[index - 1].completed = true;
-            std::cout << "Task marked as completed!" << std::endl;
+            cout << "Task marked as completed!" << endl;
         } else {
-            std::cout << "Invalid task index!" << std::endl;
+            cout << "Invalid task index!" << endl;
         }
     }
 
     void removeTask(size_t index) {
         if (index >= 1 && index <= tasks.size()) {
             tasks.erase(tasks.begin() + index - 1);
-            std::cout << "Task removed successfully!" << std::endl;
+            cout << "Task removed successfully!" << endl;
         } else {
-            std::cout << "Invalid task index!" << std::endl;
+            cout << "Invalid task index!" << endl;
         }
     }
 };
@@ -51,21 +58,21 @@ int main() {
     char choice;
 
     do {
-        std::cout << "\nMenu:" << std::endl;
-        std::cout << "1. Add Task" << std::endl;
-        std::cout << "2. View Tasks" << std::endl;
-        std::cout << "3. Mark Task as Completed" << std::endl;
-        std::cout << "4. Remove Task" << std::endl;
-        std::cout << "5. Exit" << std::endl;
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
+        cout << "\nMenu:" << endl;
+        cout << "1. Add Task" << endl;
+        cout << "2. View Tasks" << endl;
+        cout << "3. Mark Task as Completed" << endl;
+        cout << "4. Remove Task" << endl;
+        cout << "5. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
 
         switch (choice) {
             case '1': {
-                std::string taskDescription;
-                std::cout << "Enter task description: ";
-                std::cin.ignore();
-                std::getline(std::cin, taskDescription);
+                string taskDescription;
+                cout << "Enter task description: ";
+                cin.ignore();
+                getline(std::cin, taskDescription);
                 todoList.addTask(taskDescription);
                 break;
             }
@@ -74,23 +81,23 @@ int main() {
                 break;
             case '3': {
                 size_t index;
-                std::cout << "Enter task index to mark as completed: ";
-                std::cin >> index;
+                cout << "Enter task index to mark as completed: ";
+                cin >> index;
                 todoList.markAsCompleted(index);
                 break;
             }
             case '4': {
                 size_t index;
-                std::cout << "Enter task index to remove: ";
-                std::cin >> index;
+                cout << "Enter task index to remove: ";
+                cin >> index;
                 todoList.removeTask(index);
                 break;
             }
             case '5':
-                std::cout << "Exiting program. Goodbye!" << std::endl;
+                cout << "Exiting program. Goodbye!" << endl;
                 break;
             default:
-                std::cout << "Invalid choice. Please try again." << std::endl;
+                cout << "Invalid choice. Please try again." << endl;
         }
     } while (choice != '5');
 
