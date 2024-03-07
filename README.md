@@ -1,9 +1,13 @@
 **Number-Guessing-Game**
 
-Output:
-![Output Of Number Guess Game](image.png)
+*Output:*
+![Output pic Of Number Guess Game](image.png)
 
 **Tic-Tac-Toe**
+*Output:*
+![Tic-Tac-Toe output pic](image-1.png)
 
-Output:
+**ToDo**
+*Output:*
+![ToDo Output pic](image-2.png)
 
