@@ -9,7 +9,7 @@ private:
 
 public:
     TicTacToe() :  currentPlayer('X') { 
-        for(int i = 0;i<3;i++)
+        for(int i = 0; i<3 ; i++)
         {
             for(int j= 0;j<3;j++)
                 board[i][j] = ' ';
@@ -18,13 +18,13 @@ public:
     }
 
     void displayBoard() {
-        std::cout << "  1 2 3" << std::endl;
+        cout << "  1 2 3" << endl;
         for (int i = 0; i < 3; ++i) {
-            std::cout << i + 1 << " ";
+            cout << i + 1 << " ";
             for (int j = 0; j < 3; ++j) {
-                std::cout << board[i][j] << " ";
+                cout << board[i][j] << " ";
             }
-            std::cout << std::endl;
+            cout << endl;
         }
     }
 
@@ -75,13 +75,13 @@ int main() {
     TicTacToe game;
     bool gameEnd = false;
 
-    std::cout << "Welcome to Tic-Tac-Toe!" << std::endl;
+    cout << "Welcome to Tic-Tac-Toe!" << endl;
 
     do {
         game.displayBoard();
-        std::cout << "Player " << game.getCurrentPlayer() << "'s turn. Enter row and column (1-3): ";
+        cout << "Player " << game.getCurrentPlayer() << "'s turn. Enter row and column (1-3): ";
         int row, col;
-        std::cin >> row >> col;
+        cin >> row >> col;
         --row;
         --col;
 
@@ -89,17 +89,17 @@ int main() {
             game.makeMove(row, col);
             if (game.checkWin()) {
                 game.displayBoard();
-                std::cout << "Player " << game.getCurrentPlayer() << " wins!" << std::endl;
+                cout << "Player " << game.getCurrentPlayer() << " wins!" << endl;
                 gameEnd = true;
             } else if (game.checkDraw()) {
                 game.displayBoard();
-                std::cout << "It's a draw!" << std::endl;
+                cout << "It's a draw!" << endl;
                 gameEnd = true;
             } else {
                 game.switchPlayer();
             }
         } else {
-            std::cout << "Invalid move! Try again." << std::endl;
+            cout << "Invalid move! Try again." << endl;
         }
     } while (!gameEnd);
 
